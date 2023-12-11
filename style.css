@@ -1,0 +1,144 @@
+body {
+    width: 100%;
+    height: 100vh;
+    background: radial-gradient(circle, rgba(21, 26, 40, 0.914) 0%, rgba(1,6,19,1) 50%, rgba(1,6,19,1) 100%);
+
+
+
+}
+
+canvas {
+    position: fixed;
+}
+
+
+.content {
+    margin:5%;
+    width: 90%;
+    height:80%;
+    background-color: rgb(3, 6, 16);
+    color: white;
+    border-radius: 8px;
+    border: 2px solid white;
+    position: absolute;
+}
+
+
+.img-card {
+    width: 250px;
+    height: 250px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    perspective: 2500px;
+    margin: 130px 50px;
+
+ }
+
+.cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+}
+
+.wrapper {
+    transition: all .9s;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    border: 2px solid white;
+    
+
+}
+
+.img-card:hover .wrapper {
+    transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+    box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+
+}
+
+.wrapper::before,
+.wrapper::after {
+    content: "";
+    opacity: 0;
+    width: 100%;
+    height: 80px;
+    transition: all .5s;
+    position: absolute;
+    left: 0;
+
+}
+
+.wrapper::before {
+    top: 0;
+    height: 100%;
+    background: radial-gradient(circle, rgba(20, 0, 0, 0.799) 0%, rgba(0, 5, 10, 0.932) 100%);
+}
+
+
+.wrapper::after {
+    bottom: 0;
+    opacity: 1;
+    background-image: linear-gradient(to bottom,
+            transparent 46%,
+            rgba(12, 13, 19, 0.5) 68%,
+            rgba(12, 13, 19) 97%);
+
+}
+
+.img-card:hover .wrapper::before,
+.wrapper::after {
+    opacity: 1;
+}
+
+.img-card:hover .wrapper::after {
+    height: 120px;
+    
+}
+
+
+.character {
+    width: 100%;
+    opacity: 0;
+    transition: all .6s;
+    position: absolute;
+    z-index: -1;
+    left: 18px;
+ 
+}
+
+.img-card:hover .character {
+    opacity: 1;
+    transform: translate3d(0%, -30%, 100px);
+    
+}
+
+
+
+
+.typing-demo {
+    position: relative;
+    ;
+    width: 18ch;
+    animation: typing 3s steps(99);
+    white-space: nowrap;
+    overflow: hidden;
+    bottom: 220px;
+    left: 140px;
+    background-color: rgba(240, 248, 255, 0.26);
+    border-radius: 3px;
+    padding: 0 2%;
+
+}
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+}
+
+  
