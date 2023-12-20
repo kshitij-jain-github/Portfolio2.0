@@ -1,8 +1,8 @@
 const STAR_COLOR = "#fff";
-const STAR_SIZE = 3;
-const STAR_MIN_SCALE = 0.2;
+const STAR_SIZE = 1;
+const STAR_MIN_SCALE = .1;
 const OVERFLOW_THRESHOLD = 50;
-const STAR_COUNT = (window.innerWidth + window.innerHeight) / 8;
+const STAR_COUNT = (window.innerWidth + window.innerHeight)/2 ;
 
 const canvas = document.querySelector("canvas"),
   context = canvas.getContext("2d");
@@ -156,3 +156,18 @@ function render() {
  
 
 
+
+
+
+
+
+// var myVar;
+
+// function myFunction() {
+//   myVar = setTimeout(showPage, 20000);   // LOADER TIME 
+// }
+
+// function showPage() {
+//   document.getElementById("loader").style.display = "none";
+//   document.getElementById("myDiv").style.display = "block";
+// }

@@ -7,44 +7,106 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 </head>
 
-<body> <canvas>
+<!-- ADD -> onload="myFunction()" on body tag and -> id="loader" on sp-conatiner div -->
+
+<body>
+    <!-- 
+    <div class="sp-container"  id="loader" >
+        <div class="sp-content">
+             <h3 class="frame-1">Hello!</h3>
+            <h3 class="frame-2">I'm Kshitij Jain</h3>
+            <h3 class="frame-3"> Welcome to my Universe </h3>
+            <h3 class="frame-4">TEST IT!</h3>
+            <h3 class="frame-5">
+                <span>FORK,</span>
+                <span>CHANGE,</span>
+                <span>EXPERIANCE.</span>
+            </h3>
+         </div>
+    </div> -->
+    <canvas>
     </canvas>
+    <img src="/images/—Pngtree—the vast universe space atmosphere_4389450.png" class="bg-img">
+    <img src="/images/png-clipart-planets-planet-removebg-preview.png" class="bg-img-1">
 
 
 
-
-    <div class="container">
+    <!-- style="display:none;" id="myDiv"  add this in content div in next line  -->
+    <div class="content">
 
         <div class="row">
             <div class="col-lg-4">
-                <div class="img-card">
-                    <div class="wrapper">
-                        <img src="/images/3 (1).png" class="cover-image" />
+                <div class="img-card ">
+
+                    <div class="wrapper  ">
+
+                        <div class="cover-image moon"> </div>
+
                     </div>
 
-                    <img src="/images/photo-output_1-removebg-preview.png " class="character" />
+                    <!-- <img src="/images/3-removebg-preview.png" class="character" style="	background: radial-gradient(circle, rgb(11, 59, 79) 0%, rgba(2,9,19,0) 75%, rgba(36,28,155,0) 100%);
+                    " />
                     <div class="character">
                         <div class="typing-demo">Hey, I'm Kshitij Jain!</div>
-                    </div>
-
-
-
+                    </div> -->
                 </div>
+
+
             </div>
-            <div class="col-lg-8  ">
-                
+
+            <div class="col-lg-8">
+                <a class="pin pin-1 plus-btn" style="bottom: 60%; left:35%;"><span>Skills</span></a>
+                <a href="#" class="pin pin-1 plus-btn" style="top: 8%; left:20%;"><span>7</span></a>
+                <a href="#" class="pin pin-1" style="bottom: 10%; right:10%;"><span>6</span></a>
+                <a href="#" class="pin pin-1" style="top: 95%; right:40%;"><span>5</span></a>
+                <a href="#" class="pin pin-1" style="top: 20%; left:55%;"><span>4</span></a>
+                <a href="#" class="pin pin-1" style="top: 65%; right:30%;"><span>3</span></a>
+                <a href="#" class="pin pin-1" style="top: 40%; right:90%;"><span>2</span></a>
+                <a href="#" class="pin pin-1" style="top: 65%; right:55%;"><span>1</span></a>
             </div>
         </div>
 
 
-        <script src="site.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-            crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.7.1.js"
-            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    </div>
+
+
+    <div class="menu-container">
+    
+        <div class="menu ">
+            <section class="about">
+                <h1>About meewifb wkhebcih  ewbviow wivbefvw whev cw whve ivc whveic  </h1>
+                <h1>About meewifb wkhebcih  ewbviow wivbefvw whev cw whve ivc whveic  </h1>
+                <h1>About meewifb wkhebcih  ewbviow wivbefvw whev cw whve ivc whveic  </h1>
+                <h1>About meewifb wkhebcih  ewbviow wivbefvw whev cw whve ivc whveic  </h1>
+                <h1>About meewifb wkhebcih  ewbviow wivbefvw whev cw whve ivc whveic  </h1>
+                <h1>About meewifb wkhebcih  ewbviow wivbefvw whev cw whve ivc whveic  </h1>
+                <h1>About meewifb wkhebcih  ewbviow wivbefvw whev cw whve ivc whveic  </h1>
+                <h1>About meewifb wkhebcih  ewbviow wivbefvw whev cw whve ivc whveic  </h1>
+            </section>
+        </div>
+    </div>
+
+
+
+    <script src="site.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        $('.plus-btn').click(function () {
+            $('body').toggleClass('menu-open');
+        })
+
+
+    </script>
+
+
 </body>
 
 </html>
