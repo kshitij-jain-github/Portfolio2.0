@@ -153,6 +153,8 @@ function render() {
   });
 }
 
+  
+
  
 
 
@@ -164,7 +166,7 @@ function render() {
 // var myVar;
 
 // function myFunction() {
-//   myVar = setTimeout(showPage, 20000);   // LOADER TIME 
+//   myVar = setTimeout(showPage, 1000);   // LOADER TIME 
 // }
 
 // function showPage() {

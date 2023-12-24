@@ -602,9 +602,45 @@ canvas {
 	visibility: hidden;
 	overflow-y: auto;
 }
- 
+
 .menu-open .menu {
 	transform: translateY(0%);
 	visibility: visible;
 	pointer-events: all;
+}
+
+
+
+
+
+
+
+
+
+/*--------------------------------------------------------------
+# About
+--------------------------------------------------------------*/
+ 
+.about .content ul li {
+	margin-bottom: 15px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+}
+
+
+.about .content1 ul strong {
+	margin-right: 10px;
+	font-weight: 800
+}
+
+
+
+
+.about img {
+	height: 250px;
+	width: 250px;
+	padding: 2%;
+	border: 2px solid;
+
 }
