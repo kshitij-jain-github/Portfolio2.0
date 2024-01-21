@@ -7,73 +7,58 @@
 body {
 	width: 100%;
 	height: 100vh;
-	background: linear-gradient(135deg, rgba(10, 1, 5, 1) 0%, rgba(2, 9, 19, 1) 50%, rgba(0, 10, 3, 1) 100%);
-}
-
-
+	background: linear-gradient(135deg, rgb(15, 2, 8) 0%, rgb(3, 12, 25) 50%, rgba(0, 10, 3, 1) 100%);
+	overflow: hidden;
+ }
 
 canvas {
 	position: fixed;
-}
-
-/* planet */
-.bg-img {
-	width: 100vw;
-	height: 50vw;
-	position: absolute;
-	top: 0;
-	right: 700px;
-	left: 0;
-	bottom: 0;
-	margin: auto;
-	z-index: -999;
-}
-
-.bg-img-1 {
-	width: 40vw;
-	position: absolute;
-	top: 50px;
-	right: 0;
-	left: 700px;
-	bottom: 0;
-}
-
-@media (max-width: 500px) and (min-width:200px) {
-	.bg-img {
-		width: 200vw;
-		height: 220vw;
-		position: fixed;
-		top: -200px;
-		left: 0;
-		right: 140px;
-
-	}
-
-	.bg-img-1 {
-		width: 100vw;
-		position: absolute;
-		top: -60px;
-		left: -100px;
-
-	}
-
-
-
+	z-index: 1;
 }
 
 
 .content {
 	color: white;
 	border-radius: 8px;
-	/* border: 2px solid white; */
 	position: absolute;
 	margin: 5%;
 	width: 90%;
 	height: 80%;
+ 
 }
 
 
+.planet {
+	width: 380px;
+	height: 380px;
+	position: absolute;
+	top: 10px;
+	left: 770px;
+	bottom: 0;
+	z-index: 2;
+	box-shadow: -20px 20px 10px lightblue inset, 0 0 500px #0a232d, 0 0 50px 10px #07243be0;
+	border-radius: 100%;
+	background-image: url('https://flatplanet.sourceforge.net/maps/images/neptune.jpg');
+	background-size: 200px;
+	transform: rotate(10deg);
+	animation: 25s linear infinite alternate rotate;
 
+
+
+
+}
+
+@media (max-width: 500px) and (min-width:200px) {
+
+
+	.planet {
+		width: 100vw;
+		position: absolute;
+		top: -60px;
+		left: -100px;
+
+	}
+}
 
 
 
@@ -82,18 +67,54 @@ canvas {
 
 	object-fit: cover;
 	border-radius: 100%;
-	background-image: url(' https://astrogeology.usgs.gov/cache/images/3156b31e110813bccb00a415861fe627_Mercury_Messenger_DEM_Global_665m_1024.jpg');
-	width: 250px;
-	height: 250px;
-	box-shadow: inset -16px 55px 90px 17px rgb(0, 0, 0),
-		inset -23px -10px 15px 2px rgba(7, 5, 5, 0.842);
-	background-size: 600px;
-	animation-name: rotate;
-	animation-duration: 14s;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
+	width: 230px;
+	height: 230px;
 	opacity: 1;
-	margin: 280px 0 0 50px;
+	margin: 250px 0 0 50px;
+	z-index: 2;
+	position: relative;
+}
+
+.moon::before {
+	content: "";
+	background-image: url('https://www.solarsystemscope.com/textures/download/2k_eris_fictional.jpg');
+	position: absolute;
+	display: block;
+	height: 100%;
+	width: 100%;
+	border-radius: 100%;
+	animation: 60s cresent linear infinite, 40s linear infinite alternate rotate;
+	background-size: 600px;
+	transform: rotate(45deg);
+
+
+
+}
+
+@media (max-width: 500px) and (min-width:200px) {
+	.moon {
+
+		position: fixed;
+		top: 280px;
+		left: 60px;
+		height: 300px;
+		width: 300px;
+	}
+}
+
+
+
+@keyframes cresent {
+
+	from {
+		transform: rotate(-360deg) translateX(200px) rotate(360deg);
+		box-shadow: 0 0 2px #ffffffd4, 0 0 10px 2px #edecece3;
+	}
+
+	to {
+		transform: rotate(0deg) translateX(200px) rotate(0deg);
+		box-shadow: 0 0 2px #ffffffc9, 0 0 10px 4px #edecece4;
+	}
 }
 
 @keyframes rotate {
@@ -101,36 +122,17 @@ canvas {
 		background-position: 0px;
 	}
 
-	100% {
+	50% {
 		background-position: 190px;
 	}
-}
 
-
-
-
-
-
-/* typing  effect */
-.typing-demo {
-	position: relative;
-	width: 18ch;
-	animation: typing 3s steps(99);
-	white-space: nowrap;
-	overflow: hidden;
-	bottom: 200px;
-	left: 155px;
-	background-color: rgba(121, 193, 255, 0.26);
-	border-radius: 3px;
-	padding: 0 2%;
-
-}
-
-@keyframes typing {
-	from {
-		width: 0
+	100% {
+		background-position: 300px;
 	}
 }
+
+
+
 
 
 
@@ -139,7 +141,7 @@ canvas {
 	width: 34px;
 	height: 34px;
 	transform: translate(-50%, -50%);
-	z-index: 1;
+	z-index: 9;
 	border-radius: 100%;
 	position: absolute;
 	opacity: 1;
@@ -301,12 +303,291 @@ canvas {
 
 
 
+ 
+
+.modal-dialog {
+  	text-align: center;
+ 	height: 90%;
+	border-radius: 5px;
+	transform: scaleY(0.01) scaleX(0);
+	animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+	color:white;
+	
+   }
+
+  @media (max-width: 500px) and (min-width:200px) {
+	
+.modal-dialog  {
+	height: 98%;
+	 
+	}
+}
+ 
+.modal-content{
+	background: #301818;
+	border: 5px solid blanchedalmond;
+}
+@keyframes unfoldIn {
+	0% {
+		transform: scaleY(0.005) scaleX(0);
+		background-color:rgb(255, 255, 255) ;
+
+ 	}
+
+	50% {
+		transform: scaleY(0.005) scaleX(1);
+		background-color:rgb(255, 255, 255) ;
+
+	}
+
+	100% {
+		transform: scaleY(1) scaleX(1);
+
+ 
+	}
+}
+
+ 
+.material{
+ 	padding:5%;
+ 
+
+  	/* overflow: scroll; */
+	/* border: 5px solid rgb(114, 48, 48); */
+}
 
 
 
 
 
 
+
+
+
+
+
+
+ 
+h1 {
+    font-size: 40px;
+    line-height: 0.8em;
+    color: rgba(255, 255, 255, 0.2);
+}
+.made-with {
+    background: #fd264f;
+    color: #fff;
+    display: block;
+    font-size: 12px;
+    line-height: 1em;
+    margin: 0;
+    padding: 5px 110px;
+    position: fixed;
+    top: 20px;
+    right: -100px;
+    text-align: center;
+    text-decoration: none;
+    transform: rotate(45deg);
+}
+.documentation {
+    color: #fd264f;
+}
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+}
+
+.tabs {
+    display: block;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 0;
+    overflow: hidden;
+}
+.tabs [class^="tab"] label,
+.tabs [class*=" tab"] label {
+    color: #efedef;
+    cursor: pointer;
+    display: block;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1em;
+    padding: 2rem 0;
+    text-align: center;
+}
+.tabs [class^="tab"] [type="radio"],
+.tabs [class*=" tab"] [type="radio"] {
+    border-bottom: 1px solid rgba(239, 237, 239, 0.5);
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: block;
+    width: 100%;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.tabs [class^="tab"] [type="radio"]:hover,
+.tabs [class^="tab"] [type="radio"]:focus,
+.tabs [class*=" tab"] [type="radio"]:hover,
+.tabs [class*=" tab"] [type="radio"]:focus {
+    border-bottom: 1px solid #fd264f;
+}
+.tabs [class^="tab"] [type="radio"]:checked,
+.tabs [class*=" tab"] [type="radio"]:checked {
+    border-bottom: 2px solid #fd264f;
+}
+.tabs [class^="tab"] [type="radio"]:checked + div,
+.tabs [class*=" tab"] [type="radio"]:checked + div {
+    opacity: 1;
+}
+.tabs [class^="tab"] [type="radio"] + div,
+.tabs [class*=" tab"] [type="radio"] + div {
+    display: block;
+    opacity: 0;
+    padding: 2rem 0;
+    width: 90%;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.tabs .tab-2 {
+    width: 50%;
+}
+.tabs .tab-2 [type="radio"] + div {
+    width: 200%;
+    margin-left: 200%;
+}
+.tabs .tab-2 [type="radio"]:checked + div {
+    margin-left: 0;
+}
+.tabs .tab-2:last-child [type="radio"] + div {
+    margin-left: 100%;
+}
+.tabs .tab-2:last-child [type="radio"]:checked + div {
+    margin-left: -100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*social buttons*/
+.social-btns .btn,
+.social-btns .btn:before,
+.social-btns .btn .fa {
+    transition: all 0.35s;
+    transition-timing-function: cubic-bezier(0.31, -0.105, 0.43, 1.59);
+}
+
+    .social-btns .btn:before {
+        top: 90%;
+        left: -110%;
+    }
+
+    .social-btns .btn .fa {
+        transform: scale(0.8);
+    }
+
+    .social-btns .btn.facebook:before {
+        background-color: #3b5998;
+    }
+
+    .social-btns .btn.facebook .fa {
+        color: #3b5998;
+    }
+
+    .social-btns .btn.twitter:before {
+        background-color: #3cf;
+    }
+
+    .social-btns .btn.twitter .fa {
+        color: #3cf;
+    }
+
+    .social-btns .btn.google:before {
+        background-color: #dc4a39;
+    }
+
+    .social-btns .btn.google .fa {
+        color: #dc4a38;
+    }
+
+    .social-btns .btn.dribbble:before {
+        background-color: #f26798;
+    }
+
+    .social-btns .btn.dribbble .fa {
+        color: #f26798;
+    }
+
+    .social-btns .btn.skype:before {
+        background-color: #00aff0;
+    }
+
+    .social-btns .btn.skype .fa {
+        color: #00aff0;
+    }
+
+    .social-btns .btn:focus:before,
+    .social-btns .btn:hover:before {
+        top: -10%;
+        left: -10%;
+    }
+
+    .social-btns .btn:focus .fa,
+    .social-btns .btn:hover .fa {
+        color: #fff;
+        transform: scale(1);
+    }
+
+ 
+
+    .social-btns .btn {
+        display: inline-block;
+        background-color: #fff;
+        width: 60px;
+        height: 60px;
+        line-height: 42px;    
+        margin:5%;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+        box-shadow: 0 5px 15px -5px rgba(0,0,0,0.1);
+        opacity: 0.9;
+    }
+
+        .social-btns .btn:before {
+            content: '';
+            width: 120%;
+            height: 120%;
+            position: absolute;
+            transform: rotate(45deg);
+        }
+
+        .social-btns .btn .fa {
+            font-size: 44px;
+            vertical-align: middle;
+			margin: 5% -30%;
+        }
 
 
 /*   the loader */
@@ -572,75 +853,3 @@ canvas {
 	}
 }
    */
-
-
-
-
-.menu-container {
-	z-index: 2;
-	position: absolute;
-	display: flex;
-	align-items: stretch;
-	overflow: hidden;
-	height: 80%;
-	width: 90%;
-	pointer-events: none;
-	margin: 5%;
-}
-
-.menu {
-	position: relative;
-	height: 100%;
-	z-index: 3;
-	transform: translateY(-100%);
-	transition: transform .5s;
-	transition-delay: 0.5s;
-	background-color: #27292c7d;
-	color: rgb(185, 183, 183);
-	padding: 2%;
-	border-radius: 10px;
-	visibility: hidden;
-	overflow-y: auto;
-}
-
-.menu-open .menu {
-	transform: translateY(0%);
-	visibility: visible;
-	pointer-events: all;
-}
-
-
-
-
-
-
-
-
-
-/*--------------------------------------------------------------
-# About
---------------------------------------------------------------*/
- 
-.about .content ul li {
-	margin-bottom: 15px;
-	display: flex;
-	align-items: center;
-	text-align: center;
-}
-
-
-.about .content1 ul strong {
-	margin-right: 10px;
-	font-weight: 800
-}
-
-
-
-
-.about img {
-	height: 250px;
-	width: 250px;
-	padding: 2%;
-	border: 2px solid;
-
-}
