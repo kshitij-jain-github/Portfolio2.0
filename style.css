@@ -4,15 +4,36 @@
 }
 
 
+::-webkit-scrollbar {
+	width: 1px;
+}
+
+
+
+@keyframes showup {
+	0% {
+		opacity: 0;
+	}
+
+	20% {
+		opacity: 0;
+	}
+
+	80% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
 
 body {
 	width: 100%;
 	height: 100vh;
 	background: linear-gradient(135deg, rgb(15, 2, 8) 0%, rgb(3, 12, 25) 50%, rgba(0, 10, 3, 1) 100%);
 	overflow: hidden;
-
 }
-
 
 canvas {
 	position: fixed;
@@ -28,26 +49,37 @@ canvas {
 	width: 90%;
 	height: 80%;
 
+
 }
 
 
 .planet {
-	width: 380px;
-	height: 380px;
+	width: 400px;
+	height: 400px;
 	position: absolute;
-	top: 10px;
-	left: 770px;
+	top: -30px;
+	left: 750px;
 	bottom: 0;
 	z-index: 2;
 	box-shadow: -20px 20px 10px lightblue inset, 0 0 500px #0a232d, 0 0 50px 10px #07243be0;
 	border-radius: 100%;
 	background-image: url('https://flatplanet.sourceforge.net/maps/images/neptune.jpg');
 	background-size: 200px;
-	transform: rotate(10deg);
-	animation: 25s linear infinite alternate rotate;
+	transform: rotate(-15deg);
+	animation: 25s linear infinite alternate rotate, zoom-in 8s;
 
 
+}
 
+@keyframes zoom-in {
+	0% {
+		transform: scale(.01) translate3d(980px, -252px, 315px);
+
+	}
+
+	50% {
+		transform: scale(1);
+	}
 
 }
 
@@ -55,11 +87,21 @@ canvas {
 
 
 	.planet {
-		width: 100vw;
+		width: 90vw;
 		position: absolute;
 		top: -60px;
 		left: -100px;
 
+	}
+
+	@keyframes zoom-in {
+		0% {
+			transform: scale(.01) translate3d(280px, -252px, 115px);
+		}
+
+		50% {
+			transform: scale(1);
+		}
 	}
 }
 
@@ -70,8 +112,8 @@ canvas {
 
 	object-fit: cover;
 	border-radius: 100%;
-	width: 230px;
-	height: 230px;
+	width: 210px;
+	height: 210px;
 	opacity: 1;
 	margin: 250px 0 0 50px;
 	z-index: 2;
@@ -86,11 +128,19 @@ canvas {
 	height: 100%;
 	width: 100%;
 	border-radius: 100%;
-	animation: 60s cresent linear infinite, 40s linear infinite alternate rotate;
+	animation: 60s cresent linear infinite, 40s linear infinite alternate rotate, zoom-left 10s;
 	background-size: 600px;
 	transform: rotate(45deg);
 
 
+
+}
+
+
+@keyframes zoom-left {
+	0% {
+		transform: translate3d(-480px, -652px, 415px);
+	}
 
 }
 
@@ -103,6 +153,13 @@ canvas {
 		height: 300px;
 		width: 300px;
 	}
+
+	@keyframes zoom-left {
+		0% {
+			transform: translate3d(180px, 52px, 105px);
+		}
+
+	}
 }
 
 
@@ -110,12 +167,12 @@ canvas {
 @keyframes cresent {
 
 	from {
-		transform: rotate(-360deg) translateX(200px) rotate(360deg);
+		transform: rotate(-360deg) translateX(220px) rotate(360deg);
 		box-shadow: 0 0 2px #ffffffd4, 0 0 10px 2px #edecece3;
 	}
 
 	to {
-		transform: rotate(0deg) translateX(200px) rotate(0deg);
+		transform: rotate(0deg) translateX(220px) rotate(0deg);
 		box-shadow: 0 0 2px #ffffffc9, 0 0 10px 4px #edecece4;
 	}
 }
@@ -156,6 +213,18 @@ canvas {
 	align-items: center;
 	border: 2px solid transparent;
 	text-decoration: none;
+	animation: zoom 8s;
+
+}
+
+@keyframes zoom {
+	0% {
+		transform: scale(0);
+	}
+
+	100% {
+		transform: scale(1);
+	}
 }
 
 .pin span {
@@ -178,6 +247,7 @@ canvas {
 	line-height: 1;
 	opacity: 0;
 	transition: 0.2s all ease-in-out;
+
 }
 
 .pin:hover {
@@ -187,6 +257,7 @@ canvas {
 .pin:hover:after {
 	width: 7px;
 	height: 7px;
+
 }
 
 .pin:hover span {
@@ -204,6 +275,7 @@ canvas {
 .pin:active:after {
 	width: 20px;
 	height: 20px;
+
 }
 
 .pin:after {
@@ -227,6 +299,7 @@ canvas {
 	border-radius: 50%;
 	-webkit-animation: shockwave 2s 0.5s ease-out infinite;
 	animation: shockwave 2s 0.5s ease-out infinite;
+
 }
 
 @-webkit-keyframes shockwave {
@@ -318,8 +391,10 @@ canvas {
 	height: 90%;
 	border-radius: 5px;
 	transform: scaleY(0.01) scaleX(0);
-	animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+	animation: unfoldIn 1s ease-in-out;
+
 	color: white;
+
 
 }
 
@@ -338,14 +413,15 @@ canvas {
 
 @keyframes unfoldIn {
 	0% {
-		transform: scaleY(0.005) scaleX(0);
-		background-color: rgb(255, 255, 255);
+		transform: scaleY(0) scaleX(0);
+		background-color: rgba(80, 103, 121, 0.265);
 
 	}
 
 	50% {
-		transform: scaleY(0.005) scaleX(1);
-		background-color: rgb(255, 255, 255);
+		transform: scaleY(1) scaleX(1);
+		background-color: rgba(129, 129, 129, 0.064);
+
 
 	}
 
@@ -381,49 +457,41 @@ canvas {
 }
 
 
-.card {
-
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: flex-end;
-	perspective: 800px;
-	margin: 165px 40px;
-}
+ 
 
 .cover-image {
-	width: 100%;
-	height: 300px;
+	width: 320px;
+
 	object-fit: cover;
+	border-radius: 50%;
+	transform: perspective(900px) translateY(5%) rotateX(40deg) translateZ(0);
+
+
 }
 
 .character {
 	width: 300px;
-	opacity: 0;
-	transition: all .7s;
-	position: absolute;
-	z-index: -1;
-	margin: 0 -20px;
+	/* opacity: 0; */
+	/* transition: all .7s; */
+	/* position: relative; */
+	/* z-index: -1; */
+	margin: -490px 10px;
+	/* padding: 20px; */
+	/* opacity: 1; */
+	transform: translate3d(0%, 30px, 150px);
 }
 
-.card:hover .character {
-	opacity: 1;
-	transform: translate3d(0%, -30%, 130px);
-}
 
 .wrapper {
-	transition: all .5s;
-	position: absolute;
-	width: 100%;
+ 	position: relative;
+	width: 220px;
 	z-index: -1;
+	border-radius: 50%;
+	transform: perspective(900px) translateY(5%) rotateX(80deg) translateZ(0);
+ 	box-shadow: 2px 35px 32px 8px rgb(51, 72, 100);
 }
 
-.card:hover .wrapper {
-	transform: perspective(900px) translateY(-5%) rotateX(40deg) translateZ(0);
-	box-shadow: 2px 35px 32px -8px rgba(99, 62, 38, 0.703);
-	-webkit-box-shadow: 2px 35px -32px -8px rgba(51, 72, 100, 0.75);
-	-moz-box-shadow: 2px 35px 32px -8px rgba(53, 52, 52, 0.75);
-}
+
 
 
 
@@ -917,87 +985,62 @@ canvas {
 /* Expeirnece & education */
 
 
-.pricing {
+.ps-container {
 	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-}
-
-.pricing .plan {
-	background-color: #ffffffa8;
-	padding: 2.5rem;
-	margin: 12px;
-	border-radius: 5px;
-	text-align: center;
-	transition: 0.3s;
-	cursor: pointer;
-	color:black
-}
-
-.pricing .plan h2 {
-	font-size: 22px;
-	margin-bottom: 12px;
-}
-
-.pricing .plan .price {
-	margin-bottom: 1rem;
-	font-size: 30px;
-}
-
-.pricing .plan ul.features {
-	list-style-type: none;
-	text-align: left;
-}
-
-.pricing .plan ul.features li {
-	margin: 8px;
-}
-
-.pricing .plan ul.features li .fas {
-	margin-right: 4px;
-}
-
-/* .pricing .plan ul.features li .fa-check-circle {
-	color: #6ab04c;
-} */
-
-/* .pricing .plan ul.features li .fa-times-circle {
-	color: #eb4d4b;
-} */
-
-.pricing .plan button {
-	border: none;
+	align-items: center;
+	justify-items: center;
 	width: 100%;
-	padding: 12px 35px;
-	margin-top: 1rem;
-	background-color: #6ab04c;
-	color: #fff;
-	border-radius: 5px;
-	cursor: pointer;
-	font-size: 16px;
+	height: 100%;
+
 }
 
-.pricing .plan.popular {
-	border: 2px solid #6ab04c;
+.ps-photoset {
+	width: 60%;
+	max-width: 400px;
 	position: relative;
-	transform: scale(1.08);
+	margin: -80px auto 0;
+	aspect-ratio: 7/5;
 }
 
-.pricing .plan.popular span {
+.ps-photoset:hover .ps-photo {
+	transform: rotate(0deg);
+}
+
+.ps-photoset:hover .ps-photo:nth-child(1) {
+	left: 15vw;
+	top: 15vw;
+}
+
+.ps-photoset:hover .ps-photo:nth-child(2) {
+	left: -15vw;
+	top: 5vw;
+}
+
+.ps-photoset:hover .ps-photo:nth-child(3) {
+	left: 5vw;
+	top: -10vw;
+}
+
+.ps-photo {
+	width: 100%;
 	position: absolute;
-	top: -20px;
-	left: 50%;
-	transform: translateX(-50%);
-	background-color: #6ab04c;
-	color: #fff;
-	padding: 4px 20px;
-	font-size: 18px;
-	border-radius: 5px;
+	top: 0;
+	left: 0;
+	transition: 500ms all ease;
 }
 
-.pricing .plan:hover {
-	box-shadow: 0 0  6px 8px rgba(206, 70, 70, 0.37);
+.ps-photo:nth-child(1) {
+	transform: rotate(4deg);
 }
+
+.ps-photo:nth-child(2) {
+	transform: rotate(3deg);
+}
+
+.ps-photo:nth-child(3) {
+	transform: rotate(-3deg);
+}
+
 
 /* Services */
 
@@ -1253,8 +1296,8 @@ canvas {
 	margin-bottom: 30px;
 	padding: 5%;
 	color: #ffffff;
-	box-shadow: 0 0 15px 10px rgb(0, 0, 0), 0 0 1px 5px rgb(255, 153, 103);
-	background: linear-gradient(71deg, #080509, #1a171c, #080509);
+	box-shadow: 0px 0px 8px 2px rgba(19, 80, 97, 0.45);
+	background: rgba(19, 19, 21, 0.174);
 
 	backdrop-filter: blur(3px);
 
@@ -1560,5 +1603,4 @@ canvas {
 		opacity: 1;
 		transform: scale(1) rotate(0deg);
 	}
-}
-   */
+}  */
